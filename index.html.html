@@ -1,0 +1,2224 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tausif — Web Developer &amp; Digital Growth Builder | Ignitex</title>
+  <meta
+    name="description"
+    content="Portfolio of Tausif — Web Developer & Digital Growth Builder under Ignitex. Creator of ID Card Generator, RN Computer, Second Store, and Printshubbs using React, Vite, Tailwind CSS, Supabase, and Cloudflare."
+  />
+  <meta property="og:title" content="Tausif — Web Developer & Digital Growth Builder | Ignitex" />
+  <meta
+    property="og:description"
+    content="Self-driven developer building practical digital products and high-clarity business websites under Ignitex."
+  />
+  <meta property="og:type" content="website" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts: Silkscreen (Pixel), Space Grotesk, Instrument Serif, JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;700&family=Silkscreen:wght@400;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- GSAP for Restrained Editorial Animations -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+
+  <style>
+    :root {
+      --bg-light: #d6d6d4;
+      --bg-dark: #080808;
+      --accent-lime: #b8ff01;
+    }
+
+    body {
+      background-color: var(--bg-light);
+      color: #0a0a0a;
+      font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+      overflow-x: hidden;
+    }
+
+    ::selection {
+      background-color: var(--accent-lime);
+      color: #000000;
+    }
+
+    .font-pixel {
+      font-family: 'Silkscreen', 'Courier New', monospace;
+      letter-spacing: -0.03em;
+    }
+
+    .font-editorial-serif {
+      font-family: 'Instrument Serif', Georgia, serif;
+    }
+
+    .font-grotesk {
+      font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    .font-mono-tech {
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* Metallic studio backdrop matching the reference image's outer frame */
+    .metallic-studio-bg {
+      background:
+        radial-gradient(
+          circle at 28% 12%,
+          rgba(255, 255, 255, 0.55) 0%,
+          rgba(160, 162, 165, 0.18) 38%,
+          rgba(92, 94, 97, 0.85) 100%
+        ),
+        linear-gradient(125deg, #76787b 0%, #c8cacd 32%, #85878a 68%, #525457 100%);
+    }
+
+    /* Subtle dotted grid texture for light sections */
+    .halftone-light-bg {
+      background-image: radial-gradient(rgba(10, 10, 10, 0.14) 1px, transparent 1px);
+      background-size: 14px 14px;
+    }
+
+    /* Custom brutalist scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0a0a0a;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #ffffff;
+      border: 1px solid #0a0a0a;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #b8ff01;
+    }
+  </style>
+</head>
+
+<body class="min-h-screen antialiased">
+  <!-- Floating Toast Notification -->
+  <div
+    id="toast-banner"
+    role="status"
+    aria-live="polite"
+    class="fixed bottom-5 right-5 z-50 hidden items-center gap-2.5 border-2 border-[#b8ff01] bg-[#0a0a0a] px-4 py-3 text-xs font-mono-tech uppercase tracking-wider text-white shadow-[6px_6px_0px_rgba(0,0,0,0.45)]"
+  >
+    <span class="h-2 w-2 bg-[#b8ff01]"></span>
+    <span id="toast-text">Action completed</span>
+  </div>
+
+  <!-- =======================================================================
+       OUTER STUDIO SHELL + HUGE CROPPED WHITE TYPOGRAPHY BEHIND DARK HERO
+       ======================================================================= -->
+  <div
+    id="studio-shell"
+    class="relative transition-all duration-500 metallic-studio-bg pt-10 sm:pt-16 md:pt-24 px-2 sm:px-5 md:px-10 pb-8"
+  >
+    <!-- Giant Cropped White Background Wordmark ("Ignitex") Behind the Dark Hero Frame -->
+    <div
+      id="bg-cropped-wordmark"
+      aria-hidden="true"
+      class="pointer-events-none select-none overflow-hidden absolute inset-x-0 -top-6 sm:-top-10 md:-top-14 flex justify-center"
+    >
+      <span
+        class="font-editorial-serif text-[26vw] sm:text-[24vw] leading-[0.78] tracking-tight text-white/95 whitespace-nowrap drop-shadow-[0_6px_24px_rgba(0,0,0,0.18)]"
+      >
+        Ignitex
+      </span>
+    </div>
+
+    <!-- Top Studio Utility Bar (Screenshot Manager, Frame Toggle, Motion Toggle) -->
+    <div
+      class="relative z-20 mx-auto max-w-[1360px] mb-2 flex flex-wrap items-center justify-between gap-2 px-1 text-[10px] font-mono-tech uppercase tracking-wider"
+    >
+      <div
+        class="flex items-center gap-2 bg-black/80 text-white/80 px-2.5 py-1 backdrop-blur-sm border border-white/15"
+      >
+        <span class="h-1.5 w-1.5 bg-[#b8ff01]"></span>
+        <span>TAUSIF // IGNITEX PORTFOLIO SYSTEM</span>
+      </div>
+
+      <div class="flex flex-wrap items-center gap-1.5">
+        <button
+          type="button"
+          onclick="openScreenshotManager('id-card-generator')"
+          class="flex items-center gap-1.5 bg-black/85 hover:bg-black text-white px-2.5 py-1 border border-white/20 transition"
+          title="Attach your actual project screenshots"
+        >
+          <span class="text-[#b8ff01] font-bold">+</span>
+          <span id="screenshot-counter-label">SCREENSHOT MANAGER (0/4)</span>
+        </button>
+
+        <button
+          type="button"
+          id="frame-toggle-btn"
+          onclick="toggleStudioFrame()"
+          class="flex items-center gap-1 bg-black/85 hover:bg-black text-white px-2.5 py-1 border border-white/20 transition"
+        >
+          <span>FULL BLEED</span>
+        </button>
+
+        <button
+          type="button"
+          id="motion-toggle-btn"
+          onclick="toggleReducedMotion()"
+          class="bg-black/85 hover:bg-black text-white/80 hover:text-white px-2.5 py-1 border border-white/20 transition"
+        >
+          MOTION: ON
+        </button>
+      </div>
+    </div>
+
+    <!-- =====================================================================
+         DARK BLACK HERO CONTAINER (WITH PIXEL HALFTONE ARCHES & CARDS)
+         ===================================================================== -->
+    <div
+      id="hero-viewport-frame"
+      class="relative z-10 mx-auto max-w-[1360px] bg-[#080808] text-white overflow-hidden rounded-t-[22px] sm:rounded-t-[30px] border-[6px] sm:border-[10px] border-b-0 border-[#18181b] shadow-[0_30px_90px_rgba(0,0,0,0.75)]"
+    >
+      <header class="relative z-30 border-b border-white/10 bg-[#080808]/95 backdrop-blur-md">
+        <div
+          class="mx-auto flex items-center justify-between px-4 sm:px-8 py-3.5 text-[11px] font-mono-tech tracking-wider"
+        >
+          <!-- Left Brand Mark -->
+          <a
+            href="#index"
+            onclick="scrollToSection(event, 'index')"
+            class="flex items-center gap-2.5 text-white hover:text-[#b8ff01] transition font-bold"
+          >
+            <span class="inline-block h-2.5 w-2.5 bg-[#b8ff01]"></span>
+            <span class="tracking-widest">IGNITEX©</span>
+            <span class="hidden sm:inline text-white/40 font-normal">// TAUSIF</span>
+          </a>
+
+          <!-- Center Minimal Navigation -->
+          <nav aria-label="Primary Navigation" class="hidden md:flex items-center gap-8 lg:gap-12">
+            <a
+              href="#work"
+              onclick="scrollToSection(event, 'work')"
+              class="flex items-center gap-1.5 text-white hover:text-[#b8ff01] transition"
+            >
+              <span class="h-1 w-1 rounded-full bg-[#b8ff01]"></span>
+              <span>Index</span>
+            </a>
+            <a
+              href="#services"
+              onclick="scrollToSection(event, 'services')"
+              class="text-white/60 hover:text-white transition"
+            >
+              Services
+            </a>
+            <a
+              href="#about"
+              onclick="scrollToSection(event, 'about')"
+              class="text-white/60 hover:text-white transition"
+            >
+              About
+            </a>
+            <a
+              href="#contact"
+              onclick="scrollToSection(event, 'contact')"
+              class="text-white/60 hover:text-white transition"
+            >
+              Contact
+            </a>
+          </nav>
+
+          <!-- Right Status Indicator & Mobile Menu Trigger -->
+          <div class="flex items-center gap-3">
+            <a
+              href="#contact"
+              onclick="scrollToSection(event, 'contact')"
+              class="flex items-center gap-2 text-[10px] sm:text-[11px] text-white/80 hover:text-white transition"
+            >
+              <span class="relative flex h-2 w-2">
+                <span
+                  id="status-ping"
+                  class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#b8ff01] opacity-75"
+                ></span>
+                <span class="relative inline-flex rounded-full h-2 w-2 bg-[#b8ff01]"></span>
+              </span>
+              <span class="uppercase tracking-widest">OPEN FOR PROJECTS</span>
+            </a>
+
+            <button
+              type="button"
+              aria-label="Toggle Mobile Menu"
+              onclick="toggleMobileMenu()"
+              class="md:hidden border border-white/20 px-2 py-1 text-[10px] font-mono-tech text-white hover:border-white"
+            >
+              MENU
+            </button>
+          </div>
+        </div>
+
+        <!-- Mobile Dropdown Navigation -->
+        <div
+          id="mobile-menu"
+          class="hidden md:hidden border-t border-white/15 bg-[#0c0c0c] px-4 py-4 space-y-2 font-mono-tech text-xs uppercase"
+        >
+          <a
+            href="#work"
+            onclick="scrollToSection(event, 'work')"
+            class="flex w-full items-center justify-between py-2 text-white/80 hover:text-[#b8ff01] border-b border-white/10"
+          >
+            <span>01 // Work Index</span>
+            <span>↗</span>
+          </a>
+          <a
+            href="#services"
+            onclick="scrollToSection(event, 'services')"
+            class="flex w-full items-center justify-between py-2 text-white/80 hover:text-[#b8ff01] border-b border-white/10"
+          >
+            <span>02 // Services</span>
+            <span>↗</span>
+          </a>
+          <a
+            href="#about"
+            onclick="scrollToSection(event, 'about')"
+            class="flex w-full items-center justify-between py-2 text-white/80 hover:text-[#b8ff01] border-b border-white/10"
+          >
+            <span>03 // About &amp; Stack</span>
+            <span>↗</span>
+          </a>
+          <a
+            href="#contact"
+            onclick="scrollToSection(event, 'contact')"
+            class="flex w-full items-center justify-between py-2 text-white/80 hover:text-[#b8ff01]"
+          >
+            <span>04 // Let's Connect</span>
+            <span>↗</span>
+          </a>
+        </div>
+      </header>
+
+      <section id="index" class="relative pt-10 sm:pt-14 md:pt-20 pb-0 px-4 sm:px-8 md:px-12">
+        <!-- Interactive Bayer-Matrix Halftone Arches Canvas -->
+        <canvas
+          id="halftone-canvas"
+          aria-hidden="true"
+          class="pointer-events-none absolute inset-0 h-full w-full opacity-90"
+        ></canvas>
+
+        <!-- Subtle Cropped Background Watermark Inside Hero -->
+        <div
+          aria-hidden="true"
+          class="pointer-events-none select-none absolute -right-10 top-6 font-grotesk font-bold text-[18vw] leading-none text-white/[0.025] uppercase tracking-tighter"
+        >
+          TAUSIF
+        </div>
+
+        <!-- Hero Headline Composition -->
+        <div class="relative z-10 mx-auto max-w-[1180px]">
+          <div
+            class="gsap-hero-line mb-4 sm:mb-6 flex flex-wrap items-center justify-between gap-2 text-[10px] sm:text-xs font-mono-tech uppercase tracking-[0.2em] text-white/60"
+          >
+            <span>TAUSIF — WEB DEVELOPER &amp; DIGITAL GROWTH BUILDER</span>
+            <span class="hidden sm:inline text-white/40">BRAND // IGNITEX</span>
+          </div>
+
+          <!-- Line 1: I BUILD -->
+          <div class="gsap-hero-line sm:pl-[8%] md:pl-[11%]">
+            <span
+              class="font-pixel block text-2xl sm:text-4xl md:text-5xl lg:text-[54px] leading-none tracking-tight text-white uppercase"
+            >
+              I BUILD
+            </span>
+          </div>
+
+          <!-- Line 2: DIGITAL -->
+          <h1 class="gsap-hero-line my-1 sm:my-2 text-center">
+            <span class="sr-only">I BUILD DIGITAL EXPERIENCES PEOPLE LOVE</span>
+            <span
+              aria-hidden="true"
+              class="font-pixel block text-[15.5vw] sm:text-[13.5vw] md:text-[128px] lg:text-[156px] leading-[0.88] tracking-[-0.04em] text-white uppercase select-none drop-shadow-[0_8px_24px_rgba(0,0,0,0.8)]"
+            >
+              DIGITAL
+            </span>
+          </h1>
+
+          <!-- Line 3: EXPERIENCES PEOPLE LOVE -->
+          <div
+            class="gsap-hero-line mt-1 sm:mt-2 flex flex-col sm:flex-row sm:items-baseline sm:justify-end sm:pr-[4%] md:pr-[7%] gap-2 sm:gap-4"
+          >
+            <span
+              class="font-grotesk font-bold text-xl sm:text-3xl md:text-[40px] leading-none tracking-tight text-white/90 uppercase"
+            >
+              EXPERIENCES
+            </span>
+            <span
+              class="font-pixel text-2xl sm:text-3xl md:text-[42px] leading-none tracking-tight text-white uppercase"
+            >
+              PEOPLE LOVE
+            </span>
+          </div>
+
+          <!-- Supporting Copy + Two Subtle Actions (EXPLORE WORK & LET'S CONNECT) -->
+          <div
+            class="gsap-hero-line mt-8 sm:mt-10 mb-10 sm:mb-14 flex flex-col md:flex-row items-start md:items-end justify-between gap-6 border-t border-white/15 pt-5"
+          >
+            <p class="max-w-xl font-grotesk text-sm sm:text-base text-white/75 leading-relaxed">
+              Self-driven developer crafting practical digital products, custom e-commerce
+              platforms, and high-converting business websites under
+              <strong class="text-white font-semibold">Ignitex</strong>. Built with
+              <span class="text-white/95 font-mono-tech text-xs">
+                React • Vite • Tailwind CSS • Supabase • Cloudflare
+              </span>.
+            </p>
+
+            <div class="flex flex-wrap items-center gap-3 sm:gap-4">
+              <a
+                href="#work"
+                onclick="scrollToSection(event, 'work')"
+                class="group flex items-center gap-2.5 border border-white bg-white px-5 py-2.5 text-xs font-mono-tech font-bold uppercase tracking-widest text-black transition hover:bg-[#b8ff01] hover:border-[#b8ff01]"
+              >
+                <span>EXPLORE WORK</span>
+                <span class="transition-transform group-hover:translate-x-0.5 group-hover:translate-y-0.5">
+                  ↘
+                </span>
+              </a>
+
+              <a
+                href="#contact"
+                onclick="scrollToSection(event, 'contact')"
+                class="group flex items-center gap-2.5 border border-white/35 bg-white/[0.03] px-5 py-2.5 text-xs font-mono-tech uppercase tracking-widest text-white transition hover:border-white hover:bg-white/10"
+              >
+                <span class="h-1.5 w-1.5 bg-[#b8ff01]"></span>
+                <span>LET'S CONNECT</span>
+                <span class="text-white/70 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-white">
+                  ↗
+                </span>
+              </a>
+            </div>
+          </div>
+
+          <div class="relative z-20 grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-5 items-end pt-2">
+            <!-- Left 5-Column Cluster: Featured ID Card Gen + Second Store Smartphone Bezel -->
+            <div
+              class="gsap-hero-card lg:col-span-5 grid grid-cols-1 sm:grid-cols-12 gap-3 bg-[#141414] p-2.5 rounded-t-2xl border border-b-0 border-white/15"
+            >
+              <!-- Featured White Mini-Card (ID Card Generator) -->
+              <div
+                onclick="openProjectModal('id-card-generator')"
+                role="button"
+                tabindex="0"
+                class="sm:col-span-5 group relative cursor-pointer rounded-t-xl bg-white p-3.5 text-black transition hover:-translate-y-1 flex flex-col justify-between min-h-[235px]"
+              >
+                <div class="flex items-center justify-between">
+                  <span
+                    class="inline-flex items-center gap-1.5 bg-[#b8ff01] px-2 py-0.5 text-[9px] font-mono-tech font-bold uppercase tracking-wider text-black shadow-sm"
+                  >
+                    <span>•</span>
+                    <span>FEATURED</span>
+                  </span>
+                  <span class="font-mono-tech text-[9px] text-black/50">01</span>
+                </div>
+
+                <div class="my-3 rounded-lg border border-black/15 bg-[#111111] p-2.5 text-white overflow-hidden">
+                  <div class="flex items-center justify-between text-[8px] font-mono-tech text-white/60 mb-1.5">
+                    <span>ID_CARD.SYS</span>
+                    <span class="text-[#b8ff01]">ACTIVE</span>
+                  </div>
+                  <div class="border border-white/20 bg-white/5 p-2 space-y-1">
+                    <div class="flex items-center gap-2">
+                      <div
+                        class="h-6 w-5 bg-white/90 text-black flex items-center justify-center text-[7px] font-mono-tech font-bold"
+                      >
+                        ID
+                      </div>
+                      <div>
+                        <div class="text-[9px] font-bold leading-tight">SCHOOL / COLLEGE</div>
+                        <div class="text-[7px] font-mono-tech text-white/60">BATCH GENERATOR</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div>
+                  <div
+                    class="font-grotesk text-base font-extrabold uppercase leading-none tracking-tight group-hover:underline"
+                  >
+                    ID CARD GEN
+                  </div>
+                  <div class="mt-1 text-[10px] font-mono-tech text-black/60">
+                    Schools &amp; Colleges →
+                  </div>
+                </div>
+              </div>
+
+              <!-- Smartphone Bezel Card (Second Store) -->
+              <div
+                onclick="openProjectModal('second-store')"
+                role="button"
+                tabindex="0"
+                class="sm:col-span-7 group relative cursor-pointer rounded-t-xl bg-[#c8c8c8] pt-4 px-4 pb-0 text-black transition hover:-translate-y-1 flex flex-col justify-between min-h-[235px] overflow-hidden"
+              >
+                <div class="flex items-center justify-between text-[9px] font-mono-tech uppercase text-black/70 mb-2">
+                  <span>03 // SECOND STORE</span>
+                  <span class="underline group-hover:text-black">INSPECT →</span>
+                </div>
+
+                <div
+                  class="mx-auto w-full max-w-[215px] rounded-t-[26px] border-[6px] border-b-0 border-[#121212] bg-white px-3 pt-2.5 pb-5 shadow-lg transition-transform group-hover:scale-[1.02]"
+                >
+                  <div class="flex items-center justify-between text-[9px] font-sans font-bold text-black mb-2">
+                    <span>9:41</span>
+                    <div class="h-3.5 w-14 rounded-full bg-[#0a0a0a]"></div>
+                    <div class="flex items-center gap-1">
+                      <span class="h-1.5 w-2 bg-black inline-block"></span>
+                      <span class="h-2 w-3 border border-black inline-block bg-black"></span>
+                    </div>
+                  </div>
+                  <div class="border-t border-black/10 pt-2 text-left">
+                    <div class="text-[8px] font-mono-tech uppercase text-black/50">
+                      PRE-OWNED STORE CONCEPT
+                    </div>
+                    <div class="font-grotesk text-xs font-bold uppercase mt-0.5">
+                      Second Store Mobile
+                    </div>
+                    <div class="mt-1.5 flex gap-1 text-[8px] font-mono-tech">
+                      <span class="bg-black text-white px-1.5 py-0.5">SMARTPHONES</span>
+                      <span class="border border-black/30 px-1.5 py-0.5">CONCEPT</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right 7-Column Elevated Editorial Developer Card -->
+            <div
+              class="gsap-hero-card lg:col-span-7 rounded-t-2xl bg-white text-[#0a0a0a] p-5 sm:p-7 shadow-[0_-10px_40px_rgba(0,0,0,0.35)] border border-b-0 border-black/10"
+            >
+              <!-- Mini Browser Header -->
+              <div
+                class="flex flex-wrap items-center justify-between gap-2 border-b border-black/10 pb-3.5 text-[10px] font-mono-tech uppercase tracking-wider"
+              >
+                <div class="font-bold tracking-widest">TAUSIF // IGNITEX</div>
+                <div class="hidden sm:flex items-center gap-4 text-black/60">
+                  <a href="#work" onclick="scrollToSection(event, 'work')" class="hover:text-black">
+                    WORK
+                  </a>
+                  <a href="#about" onclick="scrollToSection(event, 'about')" class="hover:text-black">
+                    ABOUT
+                  </a>
+                  <a
+                    href="#services"
+                    onclick="scrollToSection(event, 'services')"
+                    class="hover:text-black"
+                  >
+                    SERVICES
+                  </a>
+                </div>
+                <button
+                  type="button"
+                  onclick="copyEmail()"
+                  class="flex items-center gap-1.5 rounded-full bg-[#0a0a0a] px-3 py-1 text-[9px] font-mono-tech text-white hover:bg-black/85 transition"
+                >
+                  <span id="hero-email-pill">TAUSIF@IGNITEX.IN</span>
+                  <span>⧉</span>
+                </button>
+              </div>
+
+              <!-- Card Body: Left Monochrome Silhouette + Right Editorial Bio & Spotlight Switcher -->
+              <div class="mt-5 grid grid-cols-1 sm:grid-cols-12 gap-5 items-center">
+                <div class="sm:col-span-4 flex flex-col items-center">
+                  <div
+                    class="relative h-28 w-28 sm:h-32 sm:w-32 rounded-full bg-[#e8e8e5] border-2 border-black overflow-hidden flex items-center justify-center shadow-inner"
+                  >
+                    <svg
+                      viewBox="0 0 120 120"
+                      class="h-full w-full"
+                      aria-label="Tausif — Ignitex monogram silhouette"
+                    >
+                      <circle cx="60" cy="60" r="60" fill="#e6e6e3"></circle>
+                      <path
+                        d="M35 46 C36 30, 58 26, 72 34 C78 38, 80 43, 80 46 L94 49 L79 52 C79 60, 74 68, 67 72 L67 84 L88 96 L88 120 L26 120 L26 95 L46 84 L46 70 C38 64, 35 55, 35 46 Z"
+                        fill="#0a0a0a"
+                      ></path>
+                      <circle cx="66" cy="44" r="2" fill="#ffffff"></circle>
+                    </svg>
+                    <span
+                      class="absolute bottom-2 bg-black text-[#b8ff01] px-2 py-0.5 text-[8px] font-mono-tech font-bold uppercase"
+                    >
+                      IGNITEX
+                    </span>
+                  </div>
+                </div>
+
+                <div class="sm:col-span-8 space-y-3">
+                  <h2
+                    class="font-grotesk text-2xl sm:text-3xl md:text-[34px] font-bold tracking-tight leading-[1.05] text-[#0a0a0a]"
+                  >
+                    Web Developer &amp; Growth Builder
+                  </h2>
+                  <p class="font-grotesk text-xs sm:text-[13px] text-black/70 leading-relaxed">
+                    Building practical digital products and business websites under
+                    <strong class="text-black">Ignitex</strong>. Focused on clean architecture,
+                    e-commerce systems, admin dashboards, and performance-driven growth.
+                  </p>
+
+                  <!-- Active Build Spotlight Switcher -->
+                  <div class="pt-2 border-t border-black/10">
+                    <div
+                      class="flex items-center justify-between text-[9px] font-mono-tech uppercase text-black/50 mb-1.5"
+                    >
+                      <span>ACTIVE BUILD SPOTLIGHT:</span>
+                      <div class="flex gap-1" id="spotlight-tabs">
+                        <button
+                          type="button"
+                          onclick="setHeroSpotlight(0)"
+                          class="spotlight-tab px-1.5 py-0.5 font-mono-tech text-[9px] border border-black/20 text-black/60 hover:border-black"
+                        >
+                          01
+                        </button>
+                        <button
+                          type="button"
+                          onclick="setHeroSpotlight(1)"
+                          class="spotlight-tab px-1.5 py-0.5 font-mono-tech text-[9px] border border-black bg-black text-white font-bold"
+                        >
+                          02
+                        </button>
+                        <button
+                          type="button"
+                          onclick="setHeroSpotlight(2)"
+                          class="spotlight-tab px-1.5 py-0.5 font-mono-tech text-[9px] border border-black/20 text-black/60 hover:border-black"
+                        >
+                          03
+                        </button>
+                        <button
+                          type="button"
+                          onclick="setHeroSpotlight(3)"
+                          class="spotlight-tab px-1.5 py-0.5 font-mono-tech text-[9px] border border-black/20 text-black/60 hover:border-black"
+                        >
+                          04
+                        </button>
+                      </div>
+                    </div>
+
+                    <div
+                      id="hero-spotlight-box"
+                      onclick="openProjectModal('rn-computer')"
+                      role="button"
+                      tabindex="0"
+                      class="group flex items-center justify-between border border-black bg-[#f6f6f4] p-2.5 cursor-pointer hover:bg-[#b8ff01] transition"
+                    >
+                      <div>
+                        <div
+                          id="hero-spotlight-title"
+                          class="font-grotesk text-xs font-bold uppercase"
+                        >
+                          02 // RN Computer
+                        </div>
+                        <div
+                          id="hero-spotlight-summary"
+                          class="font-mono-tech text-[10px] text-black/70"
+                        >
+                          A second-hand laptop store website with an admin panel.
+                        </div>
+                      </div>
+                      <span
+                        class="text-sm font-bold transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                      >
+                        ↗
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!-- =======================================================================
+       LIGHT GRAY OUTER EDITORIAL SECTIONS (PROJECTS, ABOUT, SERVICES, CONTACT)
+       ======================================================================= -->
+  <main
+    class="mx-auto max-w-[1360px] px-3 sm:px-6 md:px-10 py-12 sm:py-20 space-y-20 sm:space-y-28 halftone-light-bg"
+  >
+    <section id="work" class="relative">
+      <div
+        aria-hidden="true"
+        class="pointer-events-none select-none overflow-hidden mb-[-24px] sm:mb-[-44px]"
+      >
+        <span
+          class="font-pixel block text-[13vw] sm:text-[10.5vw] leading-none text-black/[0.06] uppercase tracking-tighter"
+        >
+          SELECTED WORK
+        </span>
+      </div>
+
+      <div
+        class="relative z-10 flex flex-col md:flex-row md:items-end justify-between gap-6 border-b-2 border-black pb-6"
+      >
+        <div>
+          <div
+            class="flex items-center gap-2 text-xs font-mono-tech uppercase tracking-widest text-black/60 mb-2"
+          >
+            <span class="h-2 w-2 bg-black"></span>
+            <span>INDEX 01 // REAL PROJECTS &amp; PRODUCT BUILDS</span>
+          </div>
+          <h2
+            class="font-grotesk text-3xl sm:text-5xl font-bold uppercase tracking-tight leading-none"
+          >
+            BUILT FOR PRACTICAL
+            <span
+              class="font-pixel text-2xl sm:text-4xl bg-black text-white px-2.5 py-0.5 inline-block"
+            >
+              IMPACT
+            </span>
+          </h2>
+        </div>
+
+        <!-- Stack Filter Buttons -->
+        <div class="flex flex-wrap items-center gap-1.5" id="tech-filter-bar">
+          <button
+            type="button"
+            onclick="filterProjectsByTech(null)"
+            data-tech="ALL"
+            class="tech-filter-btn px-3 py-1.5 text-[10px] font-mono-tech uppercase border border-black bg-black text-white font-bold transition"
+          >
+            ALL PROJECTS (4)
+          </button>
+          <button
+            type="button"
+            onclick="filterProjectsByTech('React')"
+            data-tech="React"
+            class="tech-filter-btn px-3 py-1.5 text-[10px] font-mono-tech uppercase border border-black/25 bg-white/80 text-black hover:border-black transition"
+          >
+            React
+          </button>
+          <button
+            type="button"
+            onclick="filterProjectsByTech('Supabase')"
+            data-tech="Supabase"
+            class="tech-filter-btn px-3 py-1.5 text-[10px] font-mono-tech uppercase border border-black/25 bg-white/80 text-black hover:border-black transition"
+          >
+            Supabase
+          </button>
+          <button
+            type="button"
+            onclick="filterProjectsByTech('Cloudflare')"
+            data-tech="Cloudflare"
+            class="tech-filter-btn px-3 py-1.5 text-[10px] font-mono-tech uppercase border border-black/25 bg-white/80 text-black hover:border-black transition"
+          >
+            Cloudflare
+          </button>
+          <button
+            type="button"
+            onclick="filterProjectsByTech('API Integrations')"
+            data-tech="API Integrations"
+            class="tech-filter-btn px-3 py-1.5 text-[10px] font-mono-tech uppercase border border-black/25 bg-white/80 text-black hover:border-black transition"
+          >
+            API Integrations
+          </button>
+        </div>
+      </div>
+
+      <!-- Authenticity & Screenshot Upload Bar -->
+      <div
+        class="mt-4 flex flex-wrap items-center justify-between gap-3 bg-white border border-black/15 px-4 py-2.5 text-[11px] font-mono-tech"
+      >
+        <div class="flex items-center gap-2 text-black/80">
+          <span class="h-2 w-2 bg-[#b8ff01] border border-black"></span>
+          <span>
+            AUTHENTICITY MODE: Showing real project scopes &amp; interactive interface previews
+            (zero fabricated metrics or fake testimonials).
+          </span>
+        </div>
+        <button
+          type="button"
+          onclick="openScreenshotManager('id-card-generator')"
+          class="font-bold underline hover:text-black/70"
+        >
+          + UPLOAD ACTUAL PROJECT SCREENSHOTS
+        </button>
+      </div>
+
+      <!-- 4 Project Cards Container (Rendered dynamically via JS) -->
+      <div id="projects-grid" class="mt-8 grid grid-cols-1 lg:grid-cols-2 gap-8"></div>
+    </section>
+
+    <section
+      id="about"
+      class="relative border-2 border-black bg-[#0a0a0a] text-white p-6 sm:p-10 md:p-14 shadow-[10px_10px_0px_#1f1f1f]"
+    >
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+        <div class="lg:col-span-5 space-y-6">
+          <div
+            class="inline-flex items-center gap-2 border border-white/20 bg-white/5 px-3 py-1 text-[10px] font-mono-tech uppercase tracking-widest text-[#b8ff01]"
+          >
+            <span>02 // ABOUT THE BUILDER</span>
+          </div>
+
+          <h2
+            class="font-grotesk text-3xl sm:text-4xl md:text-5xl font-bold uppercase leading-[0.96] tracking-tight"
+          >
+            SELF-DRIVEN
+            <span class="font-pixel text-[#b8ff01] block mt-1">PRODUCT</span>
+            DEVELOPER.
+          </h2>
+
+          <p class="font-grotesk text-sm sm:text-base text-white/80 leading-relaxed">
+            I'm <strong class="text-white">Tausif</strong> — a self-driven web developer and
+            digital growth builder operating under my independent brand
+            <strong class="text-white">Ignitex</strong>. I build practical digital products,
+            admin-backed e-commerce platforms, and high-contrast business websites designed to
+            solve real operational workflows.
+          </p>
+
+          <p class="font-grotesk text-xs sm:text-sm text-white/65 leading-relaxed">
+            Instead of bloated templates, I focus on fast, maintainable engineering using modern
+            frontend architecture (<span class="text-white">React, Vite, Tailwind CSS</span>),
+            resilient cloud backends (<span class="text-white">Supabase, Cloudflare</span>), custom
+            <span class="text-white">API integrations</span>, and measurable
+            <span class="text-white">performance marketing</span>.
+          </p>
+
+          <div class="pt-2 flex flex-wrap gap-3">
+            <a
+              href="#contact"
+              onclick="scrollToSection(event, 'contact')"
+              class="bg-[#b8ff01] text-black px-5 py-2.5 text-xs font-mono-tech font-bold uppercase tracking-wider hover:bg-white transition"
+            >
+              START A PROJECT →
+            </a>
+          </div>
+        </div>
+
+        <!-- 7 Core Tech Stack & Growth Disciplines -->
+        <div class="lg:col-span-7 space-y-4">
+          <div
+            class="flex items-center justify-between border-b border-white/15 pb-3 text-xs font-mono-tech uppercase text-white/60"
+          >
+            <span>CORE STACK &amp; CAPABILITIES</span>
+            <span>07 DISCIPLINES</span>
+          </div>
+
+          <div id="tech-stack-grid" class="grid grid-cols-1 sm:grid-cols-2 gap-3.5"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services" class="relative">
+      <div
+        class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b-2 border-black pb-6"
+      >
+        <div>
+          <div
+            class="flex items-center gap-2 text-xs font-mono-tech uppercase tracking-widest text-black/60 mb-2"
+          >
+            <span class="h-2 w-2 bg-black"></span>
+            <span>INDEX 03 // IGNITEX SERVICES</span>
+          </div>
+          <h2
+            class="font-grotesk text-3xl sm:text-5xl font-bold uppercase tracking-tight leading-none"
+          >
+            SERVICES &amp;
+            <span
+              class="font-pixel text-2xl sm:text-4xl bg-black text-white px-2.5 py-0.5 inline-block"
+            >
+              EXECUTION
+            </span>
+          </h2>
+        </div>
+        <p class="max-w-md font-grotesk text-xs sm:text-sm text-black/70">
+          End-to-end technical execution — from custom frontend builds and e-commerce systems to
+          backend integration, website optimization, and performance marketing.
+        </p>
+      </div>
+
+      <div
+        id="services-list"
+        class="mt-8 divide-y-2 divide-black border-2 border-black bg-white shadow-[8px_8px_0px_#0a0a0a]"
+      ></div>
+    </section>
+
+    <section
+      id="contact"
+      class="relative border-2 border-black bg-white p-6 sm:p-10 md:p-14 shadow-[10px_10px_0px_#0a0a0a]"
+    >
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+        <!-- Left Contact Details -->
+        <div class="lg:col-span-5 space-y-6">
+          <div
+            class="inline-flex items-center gap-2 bg-black text-white px-3 py-1 text-[10px] font-mono-tech uppercase tracking-widest"
+          >
+            <span class="h-2 w-2 bg-[#b8ff01]"></span>
+            <span>04 // LET'S CONNECT</span>
+          </div>
+
+          <h2
+            class="font-grotesk text-3xl sm:text-5xl font-bold uppercase leading-[0.95] tracking-tight"
+          >
+            HAVE A PROJECT FOR
+            <span class="font-pixel bg-[#b8ff01] px-2 inline-block mt-1">IGNITEX?</span>
+          </h2>
+
+          <p class="font-grotesk text-sm sm:text-base text-black/75 leading-relaxed">
+            Whether you need a custom business website, an e-commerce store with an admin panel, a
+            specialized web utility like ID Card Generator, or performance marketing support —
+            let's build it cleanly.
+          </p>
+
+          <div class="space-y-3 pt-2">
+            <div
+              class="border-2 border-black p-4 bg-[#f7f7f5] flex items-center justify-between gap-2"
+            >
+              <div>
+                <div class="font-mono-tech text-[10px] uppercase text-black/55">
+                  DIRECT EMAIL // TAUSIF
+                </div>
+                <div class="font-mono-tech text-sm sm:text-base font-bold">tausif@ignitex.in</div>
+              </div>
+              <button
+                type="button"
+                onclick="copyEmail()"
+                class="border border-black bg-black text-white px-3 py-1.5 text-[10px] font-mono-tech uppercase hover:bg-[#b8ff01] hover:text-black transition"
+              >
+                COPY EMAIL
+              </button>
+            </div>
+
+            <div
+              class="border border-black/25 p-4 bg-white flex items-center justify-between font-mono-tech text-xs"
+            >
+              <span>BRAND ENTITY:</span>
+              <span class="font-bold">IGNITEX // TAUSIF</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Interactive Brief Generator Form -->
+        <div class="lg:col-span-7">
+          <form
+            id="contact-form"
+            onsubmit="handleContactSubmit(event)"
+            class="space-y-4 border-2 border-black bg-[#f8f8f6] p-5 sm:p-7"
+          >
+            <div
+              class="flex items-center justify-between border-b border-black/15 pb-3 text-xs font-mono-tech uppercase"
+            >
+              <span class="font-bold">PROJECT BRIEF TRANSMITTER</span>
+              <span class="text-black/60">STATUS: READY</span>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label
+                  for="client-name"
+                  class="block font-mono-tech text-[10px] uppercase tracking-wider text-black/70 mb-1"
+                >
+                  YOUR NAME *
+                </label>
+                <input
+                  id="client-name"
+                  type="text"
+                  required
+                  placeholder="e.g. Rahul Sharma"
+                  class="w-full border-2 border-black bg-white px-3.5 py-2.5 text-sm font-grotesk focus:outline-none focus:bg-[#b8ff01]/10"
+                />
+              </div>
+              <div>
+                <label
+                  for="client-email"
+                  class="block font-mono-tech text-[10px] uppercase tracking-wider text-black/70 mb-1"
+                >
+                  YOUR EMAIL *
+                </label>
+                <input
+                  id="client-email"
+                  type="email"
+                  required
+                  placeholder="you@company.com"
+                  class="w-full border-2 border-black bg-white px-3.5 py-2.5 text-sm font-grotesk focus:outline-none focus:bg-[#b8ff01]/10"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label
+                for="service-select"
+                class="block font-mono-tech text-[10px] uppercase tracking-wider text-black/70 mb-1"
+              >
+                SELECT SERVICE SCOPE
+              </label>
+              <select
+                id="service-select"
+                class="w-full border-2 border-black bg-white px-3.5 py-2.5 text-sm font-grotesk focus:outline-none"
+              >
+                <option value="Website Development">01 — Website Development</option>
+                <option value="E-Commerce">02 — E-Commerce</option>
+                <option value="Backend Integration">03 — Backend Integration</option>
+                <option value="Website Optimization">04 — Website Optimization</option>
+                <option value="Digital Marketing">05 — Digital Marketing</option>
+              </select>
+            </div>
+
+            <div>
+              <label
+                for="project-details"
+                class="block font-mono-tech text-[10px] uppercase tracking-wider text-black/70 mb-1"
+              >
+                PROJECT DETAILS &amp; GOALS *
+              </label>
+              <textarea
+                id="project-details"
+                rows="4"
+                required
+                placeholder="Describe your website, store, backend integration, or growth requirements..."
+                class="w-full border-2 border-black bg-white px-3.5 py-2.5 text-sm font-grotesk focus:outline-none focus:bg-[#b8ff01]/10"
+              ></textarea>
+            </div>
+
+            <div class="flex flex-wrap items-center gap-3 pt-2">
+              <button
+                type="submit"
+                class="flex items-center gap-2 border-2 border-black bg-black px-6 py-3 text-xs font-mono-tech font-bold uppercase tracking-widest text-white hover:bg-[#b8ff01] hover:text-black transition"
+              >
+                <span>GENERATE PROJECT BRIEF</span>
+              </button>
+
+              <button
+                type="button"
+                onclick="copyFormattedBrief()"
+                class="flex items-center gap-2 border-2 border-black bg-white px-4 py-3 text-xs font-mono-tech font-bold uppercase hover:bg-black hover:text-white transition"
+              >
+                <span>COPY BRIEF</span>
+              </button>
+
+              <button
+                type="button"
+                onclick="openMailClient()"
+                class="flex items-center gap-1.5 border border-black/30 px-4 py-3 text-xs font-mono-tech uppercase hover:border-black"
+              >
+                <span>OPEN EMAIL CLIENT ↗</span>
+              </button>
+            </div>
+
+            <div
+              id="brief-output-box"
+              class="hidden mt-4 border-2 border-black bg-[#b8ff01]/25 p-4 font-mono-tech text-xs space-y-2"
+            >
+              <div class="font-bold uppercase flex items-center justify-between">
+                <span>✓ BRIEF READY FOR TRANSMISSION TO TAUSIF</span>
+                <button
+                  type="button"
+                  onclick="document.getElementById('brief-output-box').classList.add('hidden')"
+                  class="underline text-[10px]"
+                >
+                  DISMISS
+                </button>
+              </div>
+              <pre
+                id="brief-output-pre"
+                class="whitespace-pre-wrap text-[11px] bg-white p-3 border border-black/20"
+              ></pre>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t-2 border-black bg-[#080808] text-white overflow-hidden">
+    <div class="mx-auto max-w-[1360px] px-4 sm:px-8 pt-12 pb-6">
+      <div
+        class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-white/15 pb-8 text-xs font-mono-tech uppercase"
+      >
+        <div class="flex items-center gap-2.5">
+          <span class="h-2.5 w-2.5 bg-[#b8ff01]"></span>
+          <span class="font-bold">TAUSIF // IGNITEX©</span>
+          <span class="text-white/40">— WEB DEVELOPER &amp; DIGITAL GROWTH BUILDER</span>
+        </div>
+        <div class="flex flex-wrap gap-6 text-white/70">
+          <a href="#index" onclick="scrollToSection(event, 'index')" class="hover:text-white">
+            TOP ↑
+          </a>
+          <a href="#work" onclick="scrollToSection(event, 'work')" class="hover:text-white">
+            PROJECTS
+          </a>
+          <a
+            href="#services"
+            onclick="scrollToSection(event, 'services')"
+            class="hover:text-white"
+          >
+            SERVICES
+          </a>
+          <a href="#about" onclick="scrollToSection(event, 'about')" class="hover:text-white">
+            ABOUT
+          </a>
+        </div>
+      </div>
+
+      <div class="pt-8 select-none text-center">
+        <div
+          class="font-pixel text-[14vw] sm:text-[13vw] leading-[0.82] tracking-tighter text-white/95 uppercase"
+        >
+          IGNITEX
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- =======================================================================
+       MODAL 1: PROJECT ARCHITECTURAL DETAIL INSPECTOR
+       ======================================================================= -->
+  <div
+    id="project-modal"
+    role="dialog"
+    aria-modal="true"
+    class="fixed inset-0 z-50 hidden items-center justify-center bg-black/80 p-4 backdrop-blur-sm"
+    onclick="closeProjectModal()"
+  >
+    <div
+      class="max-h-[90vh] w-full max-w-3xl overflow-y-auto border-2 border-white bg-[#0e0e0e] text-white shadow-[12px_12px_0px_#b8ff01]"
+      onclick="event.stopPropagation()"
+    >
+      <div class="flex items-center justify-between border-b border-white/20 px-6 py-4">
+        <div class="flex items-center gap-3">
+          <span
+            id="modal-project-index"
+            class="font-pixel text-sm bg-[#b8ff01] text-black px-2 py-0.5 font-bold"
+          >
+            01
+          </span>
+          <span id="modal-project-category" class="font-mono-tech text-xs uppercase text-white/70">
+            CATEGORY
+          </span>
+        </div>
+        <button
+          type="button"
+          onclick="closeProjectModal()"
+          class="border border-white/30 px-2.5 py-1 text-xs font-mono-tech text-white hover:bg-white hover:text-black transition"
+        >
+          ✕
+        </button>
+      </div>
+
+      <div id="modal-project-preview" class="h-64 sm:h-80 w-full border-b border-white/20"></div>
+
+      <div class="p-6 sm:p-8 space-y-6">
+        <div>
+          <h3 id="modal-project-title" class="font-grotesk text-3xl font-bold uppercase"></h3>
+          <p id="modal-project-summary" class="mt-2 font-grotesk text-base text-white/85"></p>
+          <p
+            id="modal-project-description"
+            class="mt-3 font-grotesk text-sm text-white/65 leading-relaxed"
+          ></p>
+        </div>
+
+        <div>
+          <div class="font-mono-tech text-xs uppercase text-[#b8ff01] mb-2.5">
+            KEY ARCHITECTURAL CAPABILITIES
+          </div>
+          <ul id="modal-project-capabilities" class="grid grid-cols-1 sm:grid-cols-2 gap-2.5"></ul>
+        </div>
+
+        <div
+          class="flex flex-wrap items-center justify-between gap-4 border-t border-white/15 pt-5"
+        >
+          <div id="modal-project-stack" class="flex flex-wrap gap-2"></div>
+          <div class="flex flex-wrap gap-2">
+            <button
+              type="button"
+              id="modal-upload-btn"
+              class="border border-white px-4 py-2 text-xs font-mono-tech uppercase hover:bg-white hover:text-black transition"
+            >
+              + ATTACH ACTUAL SCREENSHOT
+            </button>
+            <button
+              type="button"
+              id="modal-inquire-btn"
+              class="bg-[#b8ff01] text-black px-4 py-2 text-xs font-mono-tech font-bold uppercase hover:bg-white transition"
+            >
+              INQUIRE SIMILAR BUILD →
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =======================================================================
+       MODAL 2: ACTUAL PROJECT SCREENSHOT MANAGER
+       ======================================================================= -->
+  <div
+    id="screenshot-modal"
+    role="dialog"
+    aria-modal="true"
+    class="fixed inset-0 z-50 hidden items-center justify-center bg-black/80 p-4 backdrop-blur-sm"
+    onclick="closeScreenshotManager()"
+  >
+    <div
+      class="w-full max-w-xl border-2 border-white bg-[#101010] p-6 text-white shadow-[12px_12px_0px_#b8ff01]"
+      onclick="event.stopPropagation()"
+    >
+      <div class="flex items-center justify-between border-b border-white/20 pb-3.5">
+        <div class="flex items-center gap-2 font-mono-tech text-xs uppercase">
+          <span class="h-2 w-2 bg-[#b8ff01]"></span>
+          <span class="font-bold">ACTUAL PROJECT SCREENSHOT MANAGER</span>
+        </div>
+        <button
+          type="button"
+          onclick="closeScreenshotManager()"
+          class="border border-white/20 px-2 py-0.5 text-xs hover:bg-white hover:text-black"
+        >
+          ✕
+        </button>
+      </div>
+
+      <p class="mt-3 font-grotesk text-xs text-white/70 leading-relaxed">
+        Attach your actual project screenshots for any of your 4 builds. Uploaded screenshots are
+        stored in your browser and replace the interactive architectural blueprint on the project
+        cards.
+      </p>
+
+      <div id="screenshot-manager-list" class="mt-4 space-y-2.5"></div>
+
+      <input
+        id="screenshot-file-input"
+        type="file"
+        accept="image/*"
+        class="hidden"
+        onchange="handleScreenshotFileSelected(event)"
+      />
+
+      <div class="mt-5 flex justify-end border-t border-white/15 pt-4">
+        <button
+          type="button"
+          onclick="closeScreenshotManager()"
+          class="border border-white px-5 py-2 text-xs font-mono-tech uppercase hover:bg-white hover:text-black"
+        >
+          DONE
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // =========================================================================
+    // AUTHENTIC PORTFOLIO DATA (NO INVENTED STATS OR FAKE TESTIMONIALS)
+    // =========================================================================
+    const PROJECTS_DATA = [
+      {
+        id: 'id-card-generator',
+        index: '01',
+        title: 'ID Card Generator',
+        category: 'WEB PLATFORM // ED-TECH UTILITY',
+        featured: true,
+        summary: 'A student ID card generation platform for schools and colleges.',
+        description:
+          'Built to streamline institutional ID card workflows for schools and colleges. Supports structured student data entry, standardized card templates, photo alignment, and print-ready layout generation without manual graphic design overhead.',
+        stack: ['React', 'Vite', 'Tailwind CSS', 'Supabase', 'Cloudflare'],
+        capabilities: [
+          'Institutional template layout engine for schools & colleges',
+          'Structured student record handling & batch card formatting',
+          'Print-ready high-contrast ID card preview & export workflow',
+          'Clean role-based dashboard for school administrators'
+        ],
+        previewType: 'id-card'
+      },
+      {
+        id: 'rn-computer',
+        index: '02',
+        title: 'RN Computer',
+        category: 'E-COMMERCE // ADMIN SYSTEM',
+        featured: true,
+        summary: 'A second-hand laptop store website with an admin panel.',
+        description:
+          'A dedicated re-commerce platform and inventory management system for a refurbished and second-hand laptop business. Pairs a clean customer-facing catalog with a custom admin panel for managing hardware configurations, pricing, and stock visibility.',
+        stack: ['React', 'Vite', 'Tailwind CSS', 'Supabase', 'API Integrations'],
+        capabilities: [
+          'Customer-facing laptop catalog with processor, RAM & storage filters',
+          'Dedicated Admin Panel for creating, updating & archiving listings',
+          'Hardware specification tables & condition transparency layout',
+          'Direct inquiry routing & responsive mobile browsing'
+        ],
+        previewType: 'laptop-store'
+      },
+      {
+        id: 'second-store',
+        index: '03',
+        title: 'Second Store',
+        category: 'RE-COMMERCE CONCEPT // MOBILE FIRST',
+        featured: false,
+        summary: 'A second-hand smartphone store concept.',
+        description:
+          'A modern mobile-first storefront concept designed for buying and browsing pre-owned smartphones. Emphasizes transparent device condition views, storage variant selection, and frictionless mobile checkout flows.',
+        stack: ['React', 'Vite', 'Tailwind CSS', 'API Integrations'],
+        capabilities: [
+          'Mobile-first product discovery & specification comparison',
+          'Structured condition tiers & device inspection checklist UI',
+          'Minimalist monochrome product cards with rapid filtering',
+          'Streamlined inquiry & reservation flow for pre-owned devices'
+        ],
+        previewType: 'smartphone-store'
+      },
+      {
+        id: 'printshubbs',
+        index: '04',
+        title: 'Printshubbs',
+        category: 'BUSINESS WEBSITE // COMMERCIAL PRINT',
+        featured: false,
+        summary: 'A website project for a printing business.',
+        description:
+          'A business website crafted for a commercial printing service provider. Presents custom print categories, paper & finish specifications, and streamlined quote requests for businesses and individuals.',
+        stack: ['React', 'Vite', 'Tailwind CSS', 'Cloudflare', 'Performance Marketing'],
+        capabilities: [
+          'Service catalog for commercial, offset & custom merchandise printing',
+          'Specification selector for formats, paper weights & finishes',
+          'Fast-loading landing architecture optimized for local & search discovery',
+          'Direct quote & artwork submission request workflow'
+        ],
+        previewType: 'print-business'
+      }
+    ];
+
+    const TECH_STACK = [
+      {
+        name: 'React',
+        category: 'Frontend Architecture',
+        detail: 'Component-driven interfaces, reusable UI systems, and predictable state management.'
+      },
+      {
+        name: 'Vite',
+        category: 'Build & Tooling',
+        detail: 'Lightning-fast bundling, ES module optimization, and lean production builds.'
+      },
+      {
+        name: 'Tailwind CSS',
+        category: 'Design Systems',
+        detail: 'Bespoke utility-first styling, precision spacing, and responsive brutalist grids.'
+      },
+      {
+        name: 'Supabase',
+        category: 'Backend & Auth',
+        detail: 'PostgreSQL relational schemas, row-level security, authentication, and storage.'
+      },
+      {
+        name: 'Cloudflare',
+        category: 'Edge & Delivery',
+        detail: 'Global CDN caching, DNS management, edge deployment, and resilient web security.'
+      },
+      {
+        name: 'API Integrations',
+        category: 'System Connectivity',
+        detail: 'RESTful integrations, webhook pipelines, third-party services, and dynamic data flows.'
+      },
+      {
+        name: 'Performance Marketing',
+        category: 'Digital Growth',
+        detail: 'Conversion-focused landing systems, analytics instrumentation, and acquisition funnels.'
+      }
+    ];
+
+    const SERVICES_DATA = [
+      {
+        id: 'website-development',
+        index: '01',
+        title: 'Website Development',
+        tag: 'ARCHITECTURE // FRONTEND',
+        summary:
+          'Custom, art-directed business websites and web applications built with React, Vite, and Tailwind CSS.',
+        deliverables: [
+          'Bespoke responsive layouts with zero template bloat',
+          'Reusable component libraries & clean semantic HTML',
+          'Accessible navigation, smooth interactions & cross-device QA'
+        ]
+      },
+      {
+        id: 'ecommerce',
+        index: '02',
+        title: 'E-Commerce',
+        tag: 'STOREFRONTS // RE-COMMERCE',
+        summary:
+          'Custom digital storefronts, product catalog architectures, and inventory management interfaces.',
+        deliverables: [
+          'High-clarity product filtering, variant selection & catalog grids',
+          'Custom admin panels for inventory & listing management',
+          'Mobile-first shopping & inquiry conversion flows'
+        ]
+      },
+      {
+        id: 'backend-integration',
+        index: '03',
+        title: 'Backend Integration',
+        tag: 'SUPABASE // CLOUDFLARE // APIS',
+        summary:
+          'Full-stack data persistence, authentication, and third-party API connectivity for web products.',
+        deliverables: [
+          'Supabase database modeling, authentication & secure storage',
+          'REST API integrations & automated data workflows',
+          'Cloudflare deployment, DNS setup & edge protection'
+        ]
+      },
+      {
+        id: 'website-optimization',
+        index: '04',
+        title: 'Website Optimization',
+        tag: 'PERFORMANCE // TECHNICAL SEO',
+        summary:
+          'Speed engineering, Core Web Vitals refinement, and technical SEO structure for maximum visibility.',
+        deliverables: [
+          'Bundle optimization, asset compression & fast initial paint',
+          'Structured SEO metadata, OpenGraph & semantic hierarchy',
+          'Mobile responsiveness & reduced-motion accessibility compliance'
+        ]
+      },
+      {
+        id: 'digital-marketing',
+        index: '05',
+        title: 'Digital Marketing',
+        tag: 'GROWTH // CONVERSION',
+        summary:
+          'Performance marketing execution paired with high-converting landing experiences to turn traffic into inquiries.',
+        deliverables: [
+          'Conversion-engineered landing pages & lead capture funnels',
+          'Campaign structure, audience targeting & conversion tracking',
+          'Iterative funnel refinement grounded in real user behavior'
+        ]
+      }
+    ];
+
+    // State
+    let selectedTechFilter = null;
+    let customScreenshots = {};
+    let uploadTargetProjectId = 'id-card-generator';
+    let framedMode = true;
+    let reducedMotion = false;
+    let previewSubViews = {
+      'id-card-generator': 'primary',
+      'rn-computer': 'primary'
+    };
+
+    // Load saved screenshots if present
+    try {
+      const saved = localStorage.getItem('ignitex_custom_screenshots_v1');
+      if (saved) customScreenshots = JSON.parse(saved);
+    } catch (_e) {}
+
+    // =========================================================================
+    // UI RENDERERS
+    // =========================================================================
+    function showToast(msg) {
+      const banner = document.getElementById('toast-banner');
+      const text = document.getElementById('toast-text');
+      if (!banner || !text) return;
+      text.textContent = msg;
+      banner.classList.remove('hidden');
+      banner.classList.add('flex');
+      clearTimeout(window.__toastTimer);
+      window.__toastTimer = setTimeout(() => {
+        banner.classList.add('hidden');
+        banner.classList.remove('flex');
+      }, 3000);
+    }
+
+    function updateScreenshotCounter() {
+      const count = Object.keys(customScreenshots).length;
+      const label = document.getElementById('screenshot-counter-label');
+      if (label) label.textContent = `SCREENSHOT MANAGER (${count}/4)`;
+    }
+
+    function buildProjectPreviewHTML(project) {
+      const customShot = customScreenshots[project.id];
+      if (customShot) {
+        return `
+          <div class="relative h-full w-full overflow-hidden bg-[#0e0e0e] group">
+            <img src="${customShot}" alt="${project.title} actual screenshot" class="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.02]" />
+            <div class="absolute top-3 right-3 flex items-center gap-1.5 bg-black/85 px-2.5 py-1 text-[10px] font-mono-tech tracking-wider text-white border border-white/20">
+              <span class="h-1.5 w-1.5 bg-[#b8ff01]"></span>
+              ACTUAL SCREENSHOT
+            </div>
+          </div>
+        `;
+      }
+
+      const subView = previewSubViews[project.id] || 'primary';
+
+      if (project.previewType === 'id-card') {
+        return `
+          <div class="relative flex h-full w-full flex-col justify-between bg-[#f3f3f1] p-4 sm:p-5 text-[#0a0a0a] select-none overflow-hidden">
+            <div class="flex items-center justify-between border-b border-black/15 pb-2.5 text-[10px] font-mono-tech uppercase tracking-wider">
+              <div class="flex items-center gap-2">
+                <span class="inline-block h-2 w-2 bg-black"></span>
+                <span class="font-bold">ID_GEN // INSTITUTIONAL STUDIO</span>
+              </div>
+              <div class="flex items-center gap-1 bg-black/5 p-0.5">
+                <button type="button" onclick="setCardSubView(event, 'id-card-generator', 'primary')" class="px-2 py-0.5 text-[9px] font-mono-tech ${subView === 'primary' ? 'bg-black text-white' : 'text-black/60 hover:text-black'}">CARD SPEC</button>
+                <button type="button" onclick="setCardSubView(event, 'id-card-generator', 'secondary')" class="px-2 py-0.5 text-[9px] font-mono-tech ${subView === 'secondary' ? 'bg-black text-white' : 'text-black/60 hover:text-black'}">BATCH QUEUE</button>
+              </div>
+            </div>
+
+            ${
+              subView === 'primary'
+                ? `
+              <div class="my-auto py-2 flex flex-col sm:flex-row items-center justify-center gap-4">
+                <div class="w-full max-w-[235px] border-2 border-black bg-white p-3 shadow-[6px_6px_0px_#0a0a0a]">
+                  <div class="flex items-center justify-between border-b-2 border-black pb-1.5 mb-2">
+                    <div>
+                      <div class="text-[8px] font-mono-tech uppercase tracking-widest text-black/60">ACADEMIC SESSION</div>
+                      <div class="text-[11px] font-bold tracking-tight uppercase">ST. XAVIER INSTITUTE</div>
+                    </div>
+                    <span class="font-mono-tech text-[9px] border border-black px-1">ID</span>
+                  </div>
+                  <div class="flex gap-3 items-start">
+                    <div class="h-14 w-12 shrink-0 border border-black bg-[#e5e5e3] flex flex-col items-center justify-center relative">
+                      <div class="h-4 w-4 rounded-full border border-black bg-white mb-0.5"></div>
+                      <div class="h-4 w-7 border-t border-x border-black bg-white"></div>
+                    </div>
+                    <div class="flex-1 space-y-1 text-[9px] font-mono-tech">
+                      <div class="font-grotesk text-[11px] font-bold uppercase leading-none">STUDENT IDENTITY</div>
+                      <div class="text-black/70">DEPT: COMPUTER SCIENCE</div>
+                      <div class="text-black/70">ROLL: #CS-2026-084</div>
+                      <div class="inline-block bg-black text-white px-1.5 py-0.5 text-[8px]">VERIFIED TEMPLATE</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="hidden md:flex flex-col gap-1.5 w-44 font-mono-tech text-[10px] border border-black/20 bg-white p-3">
+                  <div class="font-bold uppercase border-b border-black/15 pb-1">PRINT PARAMETERS</div>
+                  <div class="flex justify-between"><span class="text-black/60">FORMAT:</span><span>CR80 ISO</span></div>
+                  <div class="flex justify-between"><span class="text-black/60">INPUT:</span><span>CSV / FORM</span></div>
+                  <div class="flex justify-between"><span class="text-black/60">CROP:</span><span>AUTO-ALIGN</span></div>
+                  <div class="flex justify-between"><span class="text-black/60">OUTPUT:</span><span>PRINT PDF</span></div>
+                </div>
+              </div>`
+                : `
+              <div class="my-auto py-3 space-y-2 font-mono-tech text-[10px]">
+                <div class="border border-black bg-white p-2.5 flex items-center justify-between">
+                  <span>BATCH_01 // B.CA SEM-III</span>
+                  <span class="bg-[#b8ff01] px-1.5 py-0.5 font-bold text-black">READY FOR PRINT</span>
+                </div>
+                <div class="border border-black/30 bg-white/80 p-2.5 flex items-center justify-between">
+                  <span>BATCH_02 // HIGH SCHOOL SEC-A</span>
+                  <span class="border border-black px-1.5 py-0.5">TEMPLATE LOCKED</span>
+                </div>
+              </div>`
+            }
+
+            <div class="flex items-center justify-between border-t border-black/15 pt-2 text-[9px] font-mono-tech text-black/60">
+              <span>SCHOOL &amp; COLLEGE ID SYSTEM</span>
+              <button type="button" onclick="openScreenshotManagerFromCard(event, 'id-card-generator')" class="underline hover:text-black font-bold">+ ATTACH SCREENSHOT</button>
+            </div>
+          </div>
+        `;
+      }
+
+      if (project.previewType === 'laptop-store') {
+        return `
+          <div class="relative flex h-full w-full flex-col justify-between bg-[#121212] p-4 sm:p-5 text-white select-none overflow-hidden">
+            <div class="flex items-center justify-between border-b border-white/15 pb-2.5 text-[10px] font-mono-tech uppercase">
+              <div class="flex items-center gap-2">
+                <span class="h-2 w-2 bg-[#b8ff01]"></span>
+                <span class="font-bold tracking-wider">RN COMPUTER // STORE + ADMIN</span>
+              </div>
+              <div class="flex items-center gap-1 bg-white/10 p-0.5">
+                <button type="button" onclick="setCardSubView(event, 'rn-computer', 'primary')" class="px-2 py-0.5 text-[9px] font-mono-tech ${subView === 'primary' ? 'bg-white text-black font-bold' : 'text-white/70 hover:text-white'}">STOREFRONT</button>
+                <button type="button" onclick="setCardSubView(event, 'rn-computer', 'secondary')" class="px-2 py-0.5 text-[9px] font-mono-tech ${subView === 'secondary' ? 'bg-[#b8ff01] text-black font-bold' : 'text-white/70 hover:text-white'}">ADMIN PANEL</button>
+              </div>
+            </div>
+
+            ${
+              subView === 'primary'
+                ? `
+              <div class="my-auto py-3 grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div class="border border-white/20 bg-[#1a1a1a] p-3">
+                  <div class="flex justify-between items-center text-[9px] font-mono-tech text-white/60 mb-1.5">
+                    <span>BUSINESS SERIES</span>
+                    <span class="border border-[#b8ff01]/50 text-[#b8ff01] px-1">IN STOCK</span>
+                  </div>
+                  <div class="text-xs font-bold uppercase tracking-tight">THINKPAD T-SERIES</div>
+                  <div class="text-[10px] font-mono-tech text-white/60 mt-0.5">Core i5 • 16GB RAM • 512GB NVMe</div>
+                  <div class="mt-2 pt-2 border-t border-white/10 flex justify-between items-center text-[9px] font-mono-tech">
+                    <span class="text-white/70">TESTED &amp; GRADED</span>
+                    <span class="underline">SPEC SHEET →</span>
+                  </div>
+                </div>
+                <div class="border border-white/20 bg-[#1a1a1a] p-3">
+                  <div class="flex justify-between items-center text-[9px] font-mono-tech text-white/60 mb-1.5">
+                    <span>WORKSTATION</span>
+                    <span class="border border-white/40 text-white px-1">VERIFIED</span>
+                  </div>
+                  <div class="text-xs font-bold uppercase tracking-tight">LATITUDE PROBOOK</div>
+                  <div class="text-[10px] font-mono-tech text-white/60 mt-0.5">Core i7 • 16GB RAM • FHD IPS</div>
+                  <div class="mt-2 pt-2 border-t border-white/10 flex justify-between items-center text-[9px] font-mono-tech">
+                    <span class="text-white/70">WARRANTY SUPPORT</span>
+                    <span class="underline">SPEC SHEET →</span>
+                  </div>
+                </div>
+              </div>`
+                : `
+              <div class="my-auto py-2.5 font-mono-tech text-[10px] space-y-2">
+                <div class="flex items-center justify-between bg-white/5 border border-white/15 px-3 py-1.5 text-[#b8ff01]">
+                  <span>ADMIN // INVENTORY CONTROL CRUD</span>
+                  <span>SUPABASE AUTH</span>
+                </div>
+                <div class="grid grid-cols-3 gap-2 text-[9px]">
+                  <div class="border border-white/15 p-2 bg-black/40">
+                    <div class="text-white/50">MODULE 01</div>
+                    <div class="font-bold text-white mt-0.5">ADD / EDIT SKU</div>
+                  </div>
+                  <div class="border border-white/15 p-2 bg-black/40">
+                    <div class="text-white/50">MODULE 02</div>
+                    <div class="font-bold text-white mt-0.5">SPEC &amp; GRADE</div>
+                  </div>
+                  <div class="border border-white/15 p-2 bg-black/40">
+                    <div class="text-white/50">MODULE 03</div>
+                    <div class="font-bold text-white mt-0.5">STOCK STATUS</div>
+                  </div>
+                </div>
+              </div>`
+            }
+
+            <div class="flex items-center justify-between border-t border-white/15 pt-2 text-[9px] font-mono-tech text-white/60">
+              <span>REFURBISHED LAPTOP CATALOG + ADMIN CMS</span>
+              <button type="button" onclick="openScreenshotManagerFromCard(event, 'rn-computer')" class="text-[#b8ff01] underline hover:text-white">+ ATTACH SCREENSHOT</button>
+            </div>
+          </div>
+        `;
+      }
+
+      if (project.previewType === 'smartphone-store') {
+        return `
+          <div class="relative flex h-full w-full flex-col justify-between bg-[#cbcbcb] p-4 sm:p-5 text-[#0a0a0a] select-none overflow-hidden">
+            <div class="flex items-center justify-between text-[10px] font-mono-tech uppercase tracking-wider">
+              <span class="font-bold">SECOND STORE // MOBILE RE-COMMERCE</span>
+              <span class="bg-black text-white px-1.5 py-0.5 text-[9px]">CONCEPT UI</span>
+            </div>
+
+            <div class="mx-auto mt-3 w-full max-w-[250px] rounded-t-[28px] border-[6px] border-b-0 border-[#111111] bg-white px-3.5 pt-2.5 pb-4 shadow-xl">
+              <div class="flex items-center justify-between text-[9px] font-sans font-bold text-black mb-2">
+                <span>9:41</span>
+                <div class="h-3.5 w-16 rounded-full bg-black"></div>
+                <div class="flex items-center gap-1">
+                  <span class="inline-block h-1.5 w-2.5 bg-black"></span>
+                  <span class="inline-block h-2 w-3 border border-black bg-black"></span>
+                </div>
+              </div>
+              <div class="border-t border-black/10 pt-2">
+                <div class="text-[8px] font-mono-tech uppercase tracking-widest text-black/60">PRE-OWNED VERIFIED</div>
+                <div class="mt-1 font-grotesk text-xs font-extrabold uppercase tracking-tight">FLAGSHIP SERIES • 256GB</div>
+                <div class="mt-2 flex gap-1.5 text-[8px] font-mono-tech">
+                  <span class="border border-black bg-black text-white px-1.5 py-0.5">GRADE A+</span>
+                  <span class="border border-black/30 px-1.5 py-0.5">BATTERY CHECKED</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="flex items-center justify-between border-t border-black/20 pt-2 text-[9px] font-mono-tech text-black/70">
+              <span>PRE-OWNED SMARTPHONE STORE CONCEPT</span>
+              <button type="button" onclick="openScreenshotManagerFromCard(event, 'second-store')" class="underline hover:text-black font-bold">+ ATTACH SCREENSHOT</button>
+            </div>
+          </div>
+        `;
+      }
+
+      return `
+        <div class="relative flex h-full w-full flex-col justify-between bg-white p-4 sm:p-5 text-[#0a0a0a] select-none overflow-hidden">
+          <div class="flex items-center justify-between border-b-2 border-black pb-2 text-[10px] font-mono-tech uppercase">
+            <span class="font-bold">PRINTSHUBBS // COMMERCIAL PRINT</span>
+            <span class="bg-black text-white px-1.5 py-0.5 text-[9px]">CMYK / OFFSET</span>
+          </div>
+
+          <div class="my-auto py-3 grid grid-cols-2 gap-2.5 font-mono-tech text-[10px]">
+            <div class="border border-black p-2.5 bg-[#f7f7f5]">
+              <div class="text-[8px] text-black/50">01 // CORPORATE</div>
+              <div class="font-grotesk font-bold text-xs uppercase mt-0.5">BUSINESS CARDS &amp; STATIONERY</div>
+              <div class="mt-1.5 text-[9px] text-black/70">Matte / Spot UV / 350 GSM</div>
+            </div>
+            <div class="border border-black p-2.5 bg-[#f7f7f5]">
+              <div class="text-[8px] text-black/50">02 // LARGE FORMAT</div>
+              <div class="font-grotesk font-bold text-xs uppercase mt-0.5">BANNERS, PACKAGING &amp; LABELS</div>
+              <div class="mt-1.5 text-[9px] text-black/70">Custom Die-Cut &amp; Bulk Runs</div>
+            </div>
+          </div>
+
+          <div class="flex items-center justify-between border-t border-black/20 pt-2 text-[9px] font-mono-tech text-black/60">
+            <span>PRINTING SERVICES &amp; QUOTE PORTAL</span>
+            <button type="button" onclick="openScreenshotManagerFromCard(event, 'printshubbs')" class="underline hover:text-black font-bold">+ ATTACH SCREENSHOT</button>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderProjects() {
+      const grid = document.getElementById('projects-grid');
+      if (!grid) return;
+
+      const list = selectedTechFilter
+        ? PROJECTS_DATA.filter((p) => p.stack.includes(selectedTechFilter))
+        : PROJECTS_DATA;
+
+      grid.innerHTML = list
+        .map((project) => {
+          const hasCustom = Boolean(customScreenshots[project.id]);
+          return `
+            <article class="group relative flex flex-col justify-between border-2 border-black bg-white shadow-[8px_8px_0px_#0a0a0a] transition-transform duration-300 hover:-translate-y-1">
+              <div class="flex items-center justify-between border-b-2 border-black px-5 py-3.5 bg-[#f8f8f6]">
+                <div class="flex items-center gap-3">
+                  <span class="font-pixel text-sm bg-black text-white px-2 py-0.5">${project.index}</span>
+                  <span class="font-mono-tech text-[11px] uppercase tracking-wider text-black/70">${project.category}</span>
+                </div>
+                ${
+                  project.featured
+                    ? `<span class="bg-[#b8ff01] border border-black px-2 py-0.5 text-[9px] font-mono-tech font-bold uppercase">• FEATURED</span>`
+                    : ''
+                }
+              </div>
+
+              <div onclick="openProjectModal('${project.id}')" role="button" tabindex="0" class="relative h-[285px] w-full border-b-2 border-black overflow-hidden cursor-pointer">
+                ${buildProjectPreviewHTML(project)}
+              </div>
+
+              <div class="p-5 sm:p-6 flex-1 flex flex-col justify-between space-y-5">
+                <div>
+                  <div class="flex items-start justify-between gap-4">
+                    <h3 class="font-grotesk text-2xl sm:text-3xl font-bold uppercase tracking-tight">${project.title}</h3>
+                    <button type="button" onclick="openProjectModal('${project.id}')" aria-label="Inspect ${project.title}" class="shrink-0 border border-black px-2.5 py-1.5 text-xs font-mono-tech bg-white hover:bg-black hover:text-white transition">↗</button>
+                  </div>
+                  <p class="mt-2 font-grotesk text-sm sm:text-base font-medium text-black/90">${project.summary}</p>
+                  <p class="mt-2 font-grotesk text-xs sm:text-sm text-black/65 leading-relaxed">${project.description}</p>
+                </div>
+
+                <div class="pt-4 border-t border-black/15 flex flex-wrap items-center justify-between gap-3">
+                  <div class="flex flex-wrap gap-1.5">
+                    ${project.stack
+                      .map(
+                        (tech) =>
+                          `<span class="border border-black/25 bg-[#f3f3f1] px-2 py-0.5 text-[10px] font-mono-tech uppercase">${tech}</span>`
+                      )
+                      .join('')}
+                  </div>
+                  <div class="flex items-center gap-2">
+                    ${
+                      hasCustom
+                        ? `<button type="button" onclick="removeCustomScreenshot('${project.id}')" class="text-[10px] font-mono-tech text-red-700 underline">RESET SHOT</button>`
+                        : ''
+                    }
+                    <button type="button" onclick="openProjectModal('${project.id}')" class="text-xs font-mono-tech font-bold uppercase underline hover:text-black/70">SYSTEM SPECS →</button>
+                  </div>
+                </div>
+              </div>
+            </article>
+          `;
+        })
+        .join('');
+    }
+
+    function renderTechStack() {
+      const container = document.getElementById('tech-stack-grid');
+      if (!container) return;
+      container.innerHTML = TECH_STACK.map(
+        (item, idx) => `
+        <div onclick="filterProjectsByTech('${item.name}'); document.getElementById('work').scrollIntoView({behavior: reducedMotion ? 'auto' : 'smooth'});" role="button" tabindex="0" class="group cursor-pointer border border-white/15 bg-[#121212] p-4 transition hover:border-[#b8ff01] hover:bg-[#171717]">
+          <div class="flex items-center justify-between text-[10px] font-mono-tech text-white/50 mb-1.5">
+            <span>0${idx + 1} // ${item.category.toUpperCase()}</span>
+            <span class="text-white/40 group-hover:text-[#b8ff01]">↗</span>
+          </div>
+          <div class="font-grotesk text-lg font-bold text-white group-hover:text-[#b8ff01] transition">${item.name}</div>
+          <p class="mt-1.5 font-grotesk text-xs text-white/65 leading-relaxed">${item.detail}</p>
+        </div>
+      `
+      ).join('');
+    }
+
+    function renderServices() {
+      const container = document.getElementById('services-list');
+      if (!container) return;
+      container.innerHTML = SERVICES_DATA.map(
+        (service) => `
+        <div class="p-5 sm:p-7 bg-white hover:bg-[#fafaf8] transition">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+            <div class="lg:col-span-4 flex items-start gap-4">
+              <span class="font-pixel text-lg sm:text-xl bg-black text-white px-2.5 py-1">${service.index}</span>
+              <div>
+                <div class="font-mono-tech text-[10px] uppercase tracking-wider text-black/55">${service.tag}</div>
+                <h3 class="font-grotesk text-xl sm:text-2xl font-bold uppercase tracking-tight mt-0.5">${service.title}</h3>
+              </div>
+            </div>
+            <div class="lg:col-span-5 space-y-2.5">
+              <p class="font-grotesk text-sm text-black/85 leading-relaxed">${service.summary}</p>
+              <ul class="space-y-1">
+                ${service.deliverables
+                  .map(
+                    (d) => `
+                  <li class="flex items-center gap-2 font-mono-tech text-[11px] text-black/70">
+                    <span class="h-1.5 w-1.5 bg-black shrink-0"></span>
+                    <span>${d}</span>
+                  </li>
+                `
+                  )
+                  .join('')}
+              </ul>
+            </div>
+            <div class="lg:col-span-3 flex lg:justify-end items-center">
+              <button type="button" onclick="selectServiceForInquiry('${service.title}')" class="w-full lg:w-auto flex items-center justify-center gap-2 border-2 border-black bg-white px-4 py-2.5 text-xs font-mono-tech font-bold uppercase tracking-wider hover:bg-[#b8ff01] transition">
+                <span>INQUIRE SERVICE</span>
+                <span>↗</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      `
+      ).join('');
+    }
+
+    // =========================================================================
+    // INTERACTION HANDLERS
+    // =========================================================================
+    function setCardSubView(e, projectId, view) {
+      e.stopPropagation();
+      previewSubViews[projectId] = view;
+      renderProjects();
+    }
+
+    function filterProjectsByTech(tech) {
+      selectedTechFilter = selectedTechFilter === tech ? null : tech;
+      const buttons = document.querySelectorAll('.tech-filter-btn');
+      buttons.forEach((btn) => {
+        const btnTech = btn.getAttribute('data-tech');
+        const active =
+          (selectedTechFilter === null && btnTech === 'ALL') || btnTech === selectedTechFilter;
+        btn.className = active
+          ? 'tech-filter-btn px-3 py-1.5 text-[10px] font-mono-tech uppercase border border-black bg-[#b8ff01] text-black font-bold transition'
+          : 'tech-filter-btn px-3 py-1.5 text-[10px] font-mono-tech uppercase border border-black/25 bg-white/80 text-black hover:border-black transition';
+      });
+      renderProjects();
+    }
+
+    function setHeroSpotlight(idx) {
+      const project = PROJECTS_DATA[idx] || PROJECTS_DATA[1];
+      const titleEl = document.getElementById('hero-spotlight-title');
+      const summaryEl = document.getElementById('hero-spotlight-summary');
+      const boxEl = document.getElementById('hero-spotlight-box');
+      if (titleEl) titleEl.textContent = `${project.index} // ${project.title}`;
+      if (summaryEl) summaryEl.textContent = project.summary;
+      if (boxEl) boxEl.setAttribute('onclick', `openProjectModal('${project.id}')`);
+
+      const tabs = document.querySelectorAll('.spotlight-tab');
+      tabs.forEach((t, i) => {
+        t.className =
+          i === idx
+            ? 'spotlight-tab px-1.5 py-0.5 font-mono-tech text-[9px] border border-black bg-black text-white font-bold'
+            : 'spotlight-tab px-1.5 py-0.5 font-mono-tech text-[9px] border border-black/20 text-black/60 hover:border-black';
+      });
+    }
+
+    function scrollToSection(e, id) {
+      if (e) e.preventDefault();
+      const mobileMenu = document.getElementById('mobile-menu');
+      if (mobileMenu) mobileMenu.classList.add('hidden');
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth', block: 'start' });
+      }
+    }
+
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobile-menu');
+      if (menu) menu.classList.toggle('hidden');
+    }
+
+    function toggleStudioFrame() {
+      framedMode = !framedMode;
+      const shell = document.getElementById('studio-shell');
+      const wordmark = document.getElementById('bg-cropped-wordmark');
+      const heroFrame = document.getElementById('hero-viewport-frame');
+      const btn = document.getElementById('frame-toggle-btn');
+
+      if (framedMode) {
+        shell.className =
+          'relative transition-all duration-500 metallic-studio-bg pt-10 sm:pt-16 md:pt-24 px-2 sm:px-5 md:px-10 pb-8';
+        wordmark.classList.remove('hidden');
+        heroFrame.className =
+          'relative z-10 mx-auto max-w-[1360px] bg-[#080808] text-white overflow-hidden rounded-t-[22px] sm:rounded-t-[30px] border-[6px] sm:border-[10px] border-b-0 border-[#18181b] shadow-[0_30px_90px_rgba(0,0,0,0.75)]';
+        btn.textContent = 'FULL BLEED';
+      } else {
+        shell.className = 'relative transition-all duration-500 bg-[#080808] pt-2 px-0 pb-0';
+        wordmark.classList.add('hidden');
+        heroFrame.className =
+          'relative z-10 mx-auto max-w-[1360px] bg-[#080808] text-white overflow-hidden';
+        btn.textContent = 'STUDIO FRAME';
+      }
+    }
+
+    function toggleReducedMotion() {
+      reducedMotion = !reducedMotion;
+      const btn = document.getElementById('motion-toggle-btn');
+      const ping = document.getElementById('status-ping');
+      if (btn) btn.textContent = `MOTION: ${reducedMotion ? 'REDUCED' : 'ON'}`;
+      if (ping) {
+        if (reducedMotion) ping.classList.add('hidden');
+        else ping.classList.remove('hidden');
+      }
+      showToast(reducedMotion ? 'Reduced motion enabled' : 'Interactive animations enabled');
+    }
+
+    function copyText(text, toastLabel) {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text);
+      } else {
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+      }
+      showToast(toastLabel);
+    }
+
+    function copyEmail() {
+      copyText('tausif@ignitex.in', 'Copied tausif@ignitex.in');
+    }
+
+    function openProjectModal(projectId) {
+      const project = PROJECTS_DATA.find((p) => p.id === projectId);
+      if (!project) return;
+      document.getElementById('modal-project-index').textContent = project.index;
+      document.getElementById('modal-project-category').textContent = project.category;
+      document.getElementById('modal-project-title').textContent = project.title;
+      document.getElementById('modal-project-summary').textContent = project.summary;
+      document.getElementById('modal-project-description').textContent = project.description;
+      document.getElementById('modal-project-preview').innerHTML = buildProjectPreviewHTML(project);
+
+      document.getElementById('modal-project-capabilities').innerHTML = project.capabilities
+        .map(
+          (cap) =>
+            `<li class="border border-white/15 bg-white/5 p-3 font-mono-tech text-xs text-white/85">• ${cap}</li>`
+        )
+        .join('');
+
+      document.getElementById('modal-project-stack').innerHTML = project.stack
+        .map(
+          (t) =>
+            `<span class="border border-white/25 px-2.5 py-1 text-[10px] font-mono-tech uppercase">${t}</span>`
+        )
+        .join('');
+
+      document.getElementById('modal-upload-btn').onclick = () => {
+        closeProjectModal();
+        openScreenshotManager(project.id);
+      };
+
+      document.getElementById('modal-inquire-btn').onclick = () => {
+        closeProjectModal();
+        const detailsInput = document.getElementById('project-details');
+        if (detailsInput) {
+          detailsInput.value = `Hi Tausif, I explored your ${project.title} project and would like to discuss a similar build.`;
+        }
+        document
+          .getElementById('contact')
+          .scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth' });
+      };
+
+      const modal = document.getElementById('project-modal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeProjectModal() {
+      const modal = document.getElementById('project-modal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    // =========================================================================
+    // SCREENSHOT MANAGER
+    // =========================================================================
+    function openScreenshotManagerFromCard(e, projectId) {
+      e.stopPropagation();
+      openScreenshotManager(projectId);
+    }
+
+    function openScreenshotManager(targetId) {
+      if (targetId) uploadTargetProjectId = targetId;
+      renderScreenshotManagerList();
+      const modal = document.getElementById('screenshot-modal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeScreenshotManager() {
+      const modal = document.getElementById('screenshot-modal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    function renderScreenshotManagerList() {
+      const container = document.getElementById('screenshot-manager-list');
+      if (!container) return;
+      container.innerHTML = PROJECTS_DATA.map((p) => {
+        const hasShot = Boolean(customScreenshots[p.id]);
+        const isTarget = uploadTargetProjectId === p.id;
+        return `
+          <div class="flex items-center justify-between border p-3 ${
+            isTarget ? 'border-[#b8ff01] bg-white/10' : 'border-white/15 bg-white/5'
+          }">
+            <div>
+              <div class="font-grotesk text-sm font-bold uppercase">${p.index} // ${p.title}</div>
+              <div class="font-mono-tech text-[10px] text-white/60">${
+                hasShot ? '✓ Actual Screenshot Attached' : 'Using Interactive UI Blueprint'
+              }</div>
+            </div>
+            <div class="flex items-center gap-2">
+              ${
+                hasShot
+                  ? `<button type="button" onclick="removeCustomScreenshot('${p.id}')" class="border border-red-400/50 px-2 py-1 text-[10px] font-mono-tech text-red-300 hover:bg-red-950">REMOVE</button>`
+                  : ''
+              }
+              <button type="button" onclick="triggerFileSelect('${p.id}')" class="bg-[#b8ff01] text-black px-3 py-1.5 text-[10px] font-mono-tech font-bold uppercase hover:bg-white transition">
+                ${hasShot ? 'REPLACE IMAGE' : 'CHOOSE FILE'}
+              </button>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function triggerFileSelect(projectId) {
+      uploadTargetProjectId = projectId;
+      const input = document.getElementById('screenshot-file-input');
+      if (input) input.click();
+    }
+
+    function handleScreenshotFileSelected(e) {
+      const file = e.target.files && e.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = (ev) => {
+        const dataUrl = ev.target?.result;
+        if (typeof dataUrl === 'string') {
+          customScreenshots[uploadTargetProjectId] = dataUrl;
+          try {
+            localStorage.setItem('ignitex_custom_screenshots_v1', JSON.stringify(customScreenshots));
+          } catch (_err) {}
+          updateScreenshotCounter();
+          renderProjects();
+          renderScreenshotManagerList();
+          const proj = PROJECTS_DATA.find((p) => p.id === uploadTargetProjectId);
+          showToast(`Attached actual screenshot for ${proj ? proj.title : 'project'}`);
+        }
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function removeCustomScreenshot(projectId) {
+      delete customScreenshots[projectId];
+      try {
+        localStorage.setItem('ignitex_custom_screenshots_v1', JSON.stringify(customScreenshots));
+      } catch (_err) {}
+      updateScreenshotCounter();
+      renderProjects();
+      renderScreenshotManagerList();
+      showToast('Reverted to architectural UI blueprint');
+    }
+
+    // =========================================================================
+    // CONTACT & BRIEF GENERATOR
+    // =========================================================================
+    function selectServiceForInquiry(serviceTitle) {
+      const sel = document.getElementById('service-select');
+      if (sel) sel.value = serviceTitle;
+      document
+        .getElementById('contact')
+        .scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth' });
+      showToast(`Selected "${serviceTitle}" for inquiry`);
+    }
+
+    function getFormattedBriefText() {
+      const name = document.getElementById('client-name')?.value || 'Prospective Client';
+      const email = document.getElementById('client-email')?.value || 'Not provided';
+      const service = document.getElementById('service-select')?.value || 'Website Development';
+      const details =
+        document.getElementById('project-details')?.value ||
+        'Interested in discussing a web project with Tausif.';
+      return [
+        'PROJECT INQUIRY // IGNITEX (TAUSIF)',
+        '------------------------------------',
+        `Sender: ${name}`,
+        `Email: ${email}`,
+        `Service Needed: ${service}`,
+        `Project Scope: ${details}`
+      ].join('\n');
+    }
+
+    function handleContactSubmit(e) {
+      e.preventDefault();
+      const brief = getFormattedBriefText();
+      const box = document.getElementById('brief-output-box');
+      const pre = document.getElementById('brief-output-pre');
+      if (pre) pre.textContent = brief;
+      if (box) box.classList.remove('hidden');
+      showToast('Project brief generated — ready to copy or email');
+    }
+
+    function copyFormattedBrief() {
+      copyText(getFormattedBriefText(), 'Copied formatted project brief');
+    }
+
+    function openMailClient() {
+      const name = document.getElementById('client-name')?.value || 'New Project';
+      const service = document.getElementById('service-select')?.value || 'Website Development';
+      const subject = encodeURIComponent(`[Ignitex Inquiry] ${service} — ${name}`);
+      const body = encodeURIComponent(getFormattedBriefText());
+      window.location.href = `mailto:tausif@ignitex.in?subject=${subject}&body=${body}`;
+    }
+
+    // =========================================================================
+    // INTERACTIVE BAYER-MATRIX HALFTONE ARCH CANVAS
+    // =========================================================================
+    function initHalftoneCanvas() {
+      const canvas = document.getElementById('halftone-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      if (!ctx) return;
+
+      let time = 0;
+      let mouse = { x: 0.5, y: 0.5 };
+
+      const resize = () => {
+        const parent = canvas.parentElement;
+        if (!parent) return;
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        const rect = parent.getBoundingClientRect();
+        canvas.width = rect.width * dpr;
+        canvas.height = rect.height * dpr;
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      };
+
+      resize();
+      window.addEventListener('resize', resize);
+
+      window.addEventListener(
+        'mousemove',
+        (e) => {
+          if (reducedMotion) return;
+          const rect = canvas.getBoundingClientRect();
+          mouse.x = (e.clientX - rect.left) / Math.max(rect.width, 1);
+          mouse.y = (e.clientY - rect.top) / Math.max(rect.height, 1);
+        },
+        { passive: true }
+      );
+
+      const bayer4 = [
+        [0.06, 0.56, 0.18, 0.68],
+        [0.81, 0.31, 0.93, 0.43],
+        [0.25, 0.75, 0.12, 0.62],
+        [1.0, 0.5, 0.87, 0.37]
+      ];
+
+      const renderLoop = () => {
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        const w = canvas.width / dpr;
+        const h = canvas.height / dpr;
+        ctx.clearRect(0, 0, w, h);
+
+        const cell = w < 640 ? 6 : 7;
+        const cols = Math.ceil(w / cell);
+        const rows = Math.ceil(h / cell);
+
+        const mx = (mouse.x - 0.5) * (reducedMotion ? 0 : 28);
+        const my = (mouse.y - 0.5) * (reducedMotion ? 0 : 18);
+
+        const arch1CenterX = w * 0.21 + mx * 0.6;
+        const arch1PeakY = h * 0.14 + my * 0.5;
+        const arch1Spread = Math.max(w * 0.16, 110);
+
+        const arch2CenterX = w * 0.76 - mx * 0.6;
+        const arch2PeakY = h * 0.46 - my * 0.4;
+        const arch2Spread = Math.max(w * 0.15, 100);
+
+        for (let r = 0; r < rows; r++) {
+          const y = r * cell;
+          for (let c = 0; c < cols; c++) {
+            const x = c * cell;
+
+            const dy1 = y - arch1PeakY;
+            let intensity1 = 0;
+            if (dy1 > -30) {
+              const normY1 = Math.max(0, dy1) / (h * 0.72);
+              const targetOffset1 = Math.pow(normY1, 0.78) * arch1Spread;
+              const dist1 = Math.abs(Math.abs(x - arch1CenterX) - targetOffset1);
+              const thick1 = 26 + normY1 * 18;
+              if (dist1 < thick1) {
+                intensity1 = (1 - dist1 / thick1) * Math.min(1, (dy1 + 30) / 50);
+              }
+            }
+
+            const dy2 = y - arch2PeakY;
+            let intensity2 = 0;
+            if (dy2 > -25) {
+              const normY2 = Math.max(0, dy2) / (h * 0.52);
+              const targetOffset2 = Math.pow(normY2, 0.8) * arch2Spread;
+              const dist2 = Math.abs(Math.abs(x - arch2CenterX) - targetOffset2);
+              const thick2 = 28 + normY2 * 20;
+              if (dist2 < thick2) {
+                intensity2 = (1 - dist2 / thick2) * Math.min(1, (dy2 + 25) / 45);
+              }
+            }
+
+            const combined = Math.max(intensity1, intensity2);
+            if (combined <= 0.08) continue;
+
+            const wave = reducedMotion ? 0 : Math.sin(c * 0.18 + r * 0.12 + time * 1.4) * 0.07;
+            const threshold = bayer4[r % 4][c % 4];
+
+            if (combined + wave > threshold * 0.88) {
+              const alpha = Math.min(0.65, Math.max(0.14, combined * 0.68));
+              ctx.fillStyle = `rgba(210, 210, 210, ${alpha.toFixed(2)})`;
+              const pxSize = cell - 1.5;
+              ctx.fillRect(x, y, pxSize, pxSize);
+            }
+          }
+        }
+
+        time += 0.025;
+        requestAnimationFrame(renderLoop);
+      };
+
+      renderLoop();
+    }
+
+    // Initialize everything on DOMContentLoaded
+    window.addEventListener('DOMContentLoaded', () => {
+      if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        reducedMotion = true;
+        const btn = document.getElementById('motion-toggle-btn');
+        if (btn) btn.textContent = 'MOTION: REDUCED';
+      }
+
+      updateScreenshotCounter();
+      renderProjects();
+      renderTechStack();
+      renderServices();
+      initHalftoneCanvas();
+
+      // Run restrained GSAP entrance animation if motion is enabled
+      window.addEventListener('load', () => {
+        if (!reducedMotion && window.gsap) {
+          window.gsap.fromTo(
+            '.gsap-hero-line',
+            { y: 26, opacity: 0 },
+            { y: 0, opacity: 1, duration: 0.75, stagger: 0.12, ease: 'power3.out' }
+          );
+          window.gsap.fromTo(
+            '.gsap-hero-card',
+            { y: 36, opacity: 0 },
+            { y: 0, opacity: 1, duration: 0.85, stagger: 0.15, delay: 0.25, ease: 'power3.out' }
+          );
+        }
+      });
+    });
+  </script>
+</body>
+</html>
